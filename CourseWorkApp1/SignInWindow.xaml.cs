@@ -21,9 +21,9 @@ namespace CourseWorkApp
     /// </summary>
     public partial class SignInWindow : Window
     {
-        public static User currentUser;
-        private SignUpWindow signUpWindow = new SignUpWindow();
-        private MainWindow mainWindow = new MainWindow();
+        static public User currentUser;
+        private SignUpWindow signUpWindow = new();
+        private MainWindow mainWindow = new();
 
         public SignInWindow()
         {
@@ -46,7 +46,7 @@ namespace CourseWorkApp
         {
             if (string.IsNullOrEmpty(PhoneNumberTextBox.Text) || string.IsNullOrEmpty(PasswordTextBox.Text))
             {
-                MessageBox.Show("Введите данные");
+                MessageBox.Show("Input the data!");
                 return;
             }
             long phonenumber = Convert.ToInt64(PhoneNumberTextBox.Text.Trim());
@@ -63,33 +63,31 @@ namespace CourseWorkApp
             else
             {
                 User loginUser = null;
-                using (FlightsDataBaseContext db = new FlightsDataBaseContext())
+                
+                using FlightsDataBaseContext db = new();
+                loginUser = db.Users.Where(expected => expected.PhoneNumber == phonenumber && expected.Password == password).FirstOrDefault();
+                
+                if (loginUser == null)
                 {
-                    loginUser = db.Users.Where(expected => expected.PhoneNumber == phonenumber
-                    && expected.Password == password).FirstOrDefault();
-
-                    if (loginUser == null)
+                    MessageBox.Show("User not found!");
+                    return;
+                }
+                else
+                {
+                    if (loginUser != null)
                     {
-                        MessageBox.Show("Mega biba");
+                        currentUser = loginUser;
+                        MessageBox.Show("You logged in successfully!");
+                        MainWindow.isSignedIn = true;
+                        HomeWindow homeWindow = new();
+                        homeWindow.Show();
+                        Close();
                         return;
                     }
                     else
                     {
-                        if (loginUser != null)
-                        {
-                            currentUser = loginUser;
-                            MessageBox.Show("You logged in successfully!");
-                            MainWindow.isSignedIn = true;
-                            HomeWindow homeWindow = new HomeWindow();
-                            homeWindow.Show();
-                            return;
-                        }
-
-                        else
-                        {
-                            MessageBox.Show("20% detected", "Ooops. Some biba has just acquired");
-                            return;
-                        }
+                        MessageBox.Show("20% detected", "Something went wrong!");
+                        return;
                     }
                 }
             }
@@ -98,10 +96,9 @@ namespace CourseWorkApp
         private void SignInButton_Click(object sender, RoutedEventArgs e)
         {
             LogInUserMethod();
-            //MessageBox.Show("кнопачька работаит");
         }
 
-        private void away_Click(object sender, RoutedEventArgs e)
+        private void Away_Click(object sender, RoutedEventArgs e)
         {
             ToSignUpMethod();
         }

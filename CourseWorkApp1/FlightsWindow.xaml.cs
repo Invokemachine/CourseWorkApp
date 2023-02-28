@@ -20,21 +20,19 @@ namespace CourseWorkApp1
     /// </summary>
     public partial class FlightsWindow : Window
     {
-        private Flight currentFlight;
-        private FlightsDataBaseContext db = new FlightsDataBaseContext();
+        private Flight ?currentFlight;
+        private FlightsDataBaseContext db = new();
 
         public FlightsWindow()
         {
             InitializeComponent();
-            using (var db = new FlightsDataBaseContext())
-            {
-                FlightsDataGrid.ItemsSource = db.Flights.ToList();
-            }
+            using var db = new FlightsDataBaseContext();
+            FlightsDataGrid.ItemsSource = db.Flights.ToList();
         }
 
         private void BackMethod()
         {
-            HomeWindow homeWindow = new HomeWindow();
+            HomeWindow homeWindow = new();
             homeWindow.Show();
             Close();
         }
@@ -69,14 +67,13 @@ namespace CourseWorkApp1
                 Price = currentFlight.Price,
                 Status = "Not payed"
             };
-
             if (newTakenFlight.UserIdCheck != null)
             {
                 db.TakenFlights.Add(newTakenFlight);
                 db.SaveChanges();
 
                 MessageBox.Show("Ticket was reserved!", "80% detected");
-                SignInWindow signInWindow = new SignInWindow();
+                SignInWindow signInWindow = new();
                 signInWindow.Show();
                 Close();
                 return;

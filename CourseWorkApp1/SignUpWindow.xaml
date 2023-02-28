@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseWorkApp"
         mc:Ignorable="d"
-        Title="SignUpWindow" Height="1024" Width="1440">
+        Title="Registration" Height="1024" Width="1440" Icon="C:\Users\AzatYTebiLove\source\repos\CourseWorkApp1\CourseWorkApp1\Resources\AppIcon.png">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="C:\Users\AzatYTebiLove\source\repos\CourseWorkApp1\CourseWorkApp1\Resources\FixedBG.PNG"></ImageBrush>

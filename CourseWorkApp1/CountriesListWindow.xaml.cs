@@ -25,23 +25,21 @@ namespace CourseWorkApp
         public CountriesListWindow()
         {
             InitializeComponent();
-            using (var db = new FlightsDataBaseContext())
-            {
-                CountriesDataGrid.ItemsSource = db.Countries.ToList();
-            }
+            using var db = new FlightsDataBaseContext();
+            CountriesDataGrid.ItemsSource = db.Countries.ToList();
         }
 
         private void BackMethod()
         {
             if (MainWindow.isSignedIn == false)
             {
-                MainWindow mainWindow = new MainWindow();
+                MainWindow mainWindow = new();
                 mainWindow.Show();
                 Close();
             }
             else
             {
-                HomeWindow homeWindow = new HomeWindow();
+                HomeWindow homeWindow = new();
                 homeWindow.Show();
                 Close();
             }
@@ -54,7 +52,7 @@ namespace CourseWorkApp
 
         private void CountryInformationShow()
         {
-            AboutCountryWindow aboutCountryWindow = new AboutCountryWindow(currentCountry);
+            AboutCountryWindow aboutCountryWindow = new(currentCountry);
             aboutCountryWindow.Show();
             Close();
         }

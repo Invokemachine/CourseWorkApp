@@ -28,7 +28,7 @@ namespace CourseWorkApp1
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            PersonalInformationWindow personalInformationWindow = new PersonalInformationWindow();
+            PersonalInformationWindow personalInformationWindow = new();
             personalInformationWindow.Show();
             Close();
         }

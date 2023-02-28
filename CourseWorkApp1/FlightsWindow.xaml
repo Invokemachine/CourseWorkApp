@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseWorkApp1"
         mc:Ignorable="d"
-        Title="FlightsWindow" Height="1000" Width="1000">
+        Title="Flights list" Height="1000" Width="1000" Icon="C:\Users\AzatYTebiLove\source\repos\CourseWorkApp1\CourseWorkApp1\Resources\AppIcon.png">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="C:\Users\AzatYTebiLove\source\repos\CourseWorkApp1\CourseWorkApp1\Resources\a1.jpg"></ImageBrush>
@@ -46,7 +46,7 @@
                 <DataGridTemplateColumn Width="auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="BuyTicketButton" Content="Details" Click="BuyTicketButton_Click"/>
+                            <Button Name="BuyTicketButton" Content="Reserve" Click="BuyTicketButton_Click"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

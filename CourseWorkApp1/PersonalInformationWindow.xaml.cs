@@ -18,13 +18,30 @@ namespace CourseWorkApp
     public partial class PersonalInformationWindow : Window
     {
         private FlightsDataBaseContext db = new FlightsDataBaseContext();
-        public User currentUser;
+ 
+        /// !!!!!!!!!!!!!!!!!!!!!
+        /// </summary>
         public PersonalInformationWindow()
         {
             InitializeComponent();
-            using (var db = new FlightsDataBaseContext())
+            InitUserData();
+        }
+
+        private void InitUserData()
+        {
+            if (SignInWindow.currentUser != null)
             {
-                
+                EmailTextBox.Text = SignInWindow.currentUser.Email;
+                NameTextBox.Text = SignInWindow.currentUser.Fullname;
+                CitizenshipTextBox.Text = SignInWindow.currentUser.Citizenship;
+                PassportIdTextBox.Text = Convert.ToString(SignInWindow.currentUser.PassportId);
+                PassportSeriesTextBox.Text = Convert.ToString(SignInWindow.currentUser.PassportSeries);
+            }
+            else
+            {
+                MessageBox.Show("Biba");
+                HomeWindow homeWindow = new();
+                Close();
             }
         }
 
@@ -42,25 +59,45 @@ namespace CourseWorkApp
             Close();
         }
 
+        private void SaveChangesMethod()
+        {
+            if (SignInWindow.currentUser != null)
+            {
+                SignInWindow.currentUser.Email = EmailTextBox.Text;
+                SignInWindow.currentUser.Fullname = NameTextBox.Text;
+                SignInWindow.currentUser.Citizenship = CitizenshipTextBox.Text;
+                if (Int64.TryParse(PassportIdTextBox.Text, out long i) == false || Int64.TryParse(PassportSeriesTextBox.Text, out long j) == false)
+                {
+                    MessageBox.Show("Infortmation that you used in Passport Id or Passport Series is not a number or empty!");
+                    return;
+                }
+                else
+                {
+                    SignInWindow.currentUser.PassportId = Convert.ToInt64(PassportIdTextBox.Text);
+                    SignInWindow.currentUser.PassportSeries = Convert.ToInt64(PassportSeriesTextBox.Text);
+                    try
+                    {
+                        db.Update(SignInWindow.currentUser);
+                        db.SaveChanges();
+                        MessageBox.Show("Information was updated!", "80% detected");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message.ToString());
+                        MessageBox.Show("pumba");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("User is empty!", "Fatal error");
+                return;
+            }
+        }
+
         private void SaveChangesButton_Click(object sender, RoutedEventArgs e)
         {
-            currentUser = SignInWindow.currentUser;
-            currentUser.Email = EmailTextBox.Text;
-            currentUser.Fullname = NameTextBox.Text;
-            currentUser.Citizenship = CitizenshipTextBox.Text;
-            currentUser.PassportId = Convert.ToInt64(PassportIdTextBox.Text);
-            currentUser.PassportSeries = Convert.ToInt64(PassportSeriesTextBox.Text);
-            try
-            {
-                db.SaveChanges();
-                MessageBox.Show("Information was updated!", "80% detected");
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-            
+            SaveChangesMethod();
         }
 
         private void PayButton_Click(object sender, RoutedEventArgs e)

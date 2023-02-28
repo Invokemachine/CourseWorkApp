@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseWorkApp"
         mc:Ignorable="d"
-        Title="PersonalInformationWindow" Height="1024" Width="1440">
+        Title="Personal Information" Height="1024" Width="1440" Icon="C:\Users\AzatYTebiLove\source\repos\CourseWorkApp1\CourseWorkApp1\Resources\AppIcon.png">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="C:\Users\AzatYTebiLove\source\repos\CourseWorkApp1\CourseWorkApp1\Resources\a1.jpg"></ImageBrush>
@@ -27,13 +27,13 @@
         </StackPanel>
         <StackPanel Grid.Row="2" Grid.ColumnSpan="2">
             <Label Content="Full Name:" FontSize="35" Margin="1" HorizontalAlignment="Center" Foreground="#504E4E" />
-            <TextBox x:Name="NameTextBox" Text="{Binding Fullname}" Height="57" HorizontalAlignment="Center" Margin="5" />
+            <TextBox x:Name="NameTextBox" Height="57" HorizontalAlignment="Center" Margin="5" />
             <Label Content="Citizenship:" FontSize="35" Margin="1" HorizontalAlignment="Center" Foreground="#504E4E"/>
-            <TextBox x:Name="CitizenshipTextBox" Text="{Binding Citizenship}" Height="57" HorizontalAlignment="Center" Margin="5" />
-            <Label Content="Passport number:" FontSize="35" Margin="1" HorizontalAlignment="Center" Foreground="#504E4E"/>
-            <TextBox x:Name="PassportIdTextBox" Text="{Binding PassportId}" Height="57" HorizontalAlignment="Center" Margin="5"/>
+            <TextBox x:Name="CitizenshipTextBox" Height="57" HorizontalAlignment="Center" Margin="5" />
+            <Label Content="Passport number:" FontSize="35" Margin="1" HorizontalAlignment="Center" Foreground="Black"/>
+            <TextBox x:Name="PassportIdTextBox" Height="57" HorizontalAlignment="Center" Margin="5"/>
             <Label Content="Passport series:" FontSize="35" Margin="1" HorizontalAlignment="Center" Foreground="white"/>
-            <TextBox x:Name="PassportSeriesTextBox" Text="{Binding PassportSeries}" Height="57" HorizontalAlignment="Center" Margin="5"/>
+            <TextBox x:Name="PassportSeriesTextBox" Height="57" HorizontalAlignment="Center" Margin="5"/>
             <Label Content="Email:" FontSize="35" Margin="1" HorizontalAlignment="Center"/>
             <TextBox x:Name="EmailTextBox" Height="57" HorizontalAlignment="Center" Margin="5"/>
         </StackPanel>

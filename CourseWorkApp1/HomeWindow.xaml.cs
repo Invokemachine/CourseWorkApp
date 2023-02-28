@@ -28,25 +28,25 @@ namespace CourseWorkApp
         private void LogOutMethod()
         {
             MainWindow.isSignedIn = false;
-            MainWindow mainWindow = new MainWindow();
+            MainWindow mainWindow = new();
             mainWindow.Show();
             Close();
         }
         private void ToFlightsMethod()
         {
-            FlightsWindow flightsWindow = new FlightsWindow();
+            FlightsWindow flightsWindow = new();
             flightsWindow.Show();
             Close();
         }
         private void ToCountries()
         {
-            CountriesListWindow countriesListWindow = new CountriesListWindow();
+            CountriesListWindow countriesListWindow = new();
             countriesListWindow.Show();
             Close();
         }
         private void ToDocuments()
         {
-            PersonalInformationWindow personalInformationWindow = new PersonalInformationWindow();
+            PersonalInformationWindow personalInformationWindow = new();
             personalInformationWindow.Show();
             Close();
         }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseWorkApp"
         mc:Ignorable="d"
-        Title="SignInWindow" Height="1040" Width="1440">
+        Title="Authorization" Height="1040" Width="1440" Icon="C:\Users\AzatYTebiLove\source\repos\CourseWorkApp1\CourseWorkApp1\Resources\AppIcon.png">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="C:\Users\AzatYTebiLove\source\repos\CourseWorkApp1\CourseWorkApp1\Resources\FixedBG.PNG"></ImageBrush>
@@ -41,7 +41,7 @@
                 </Button.Background>
             </Button>
             <TextBlock x:Name="ToSigningUpTextBlock" FontSize="25" Margin="5" FontStyle="Italic" HorizontalAlignment="Center">
-                <Hyperlink Foreground="#3B53AA" NavigateUri="SignUpWindow.xaml" Click="away_Click" >Don't have an account yet? Sign up now!</Hyperlink>
+                <Hyperlink Foreground="#3B53AA" NavigateUri="SignUpWindow.xaml" Click="Away_Click" >Don't have an account yet? Sign up now!</Hyperlink>
             </TextBlock>
         </StackPanel>
         <StackPanel HorizontalAlignment="Left">
